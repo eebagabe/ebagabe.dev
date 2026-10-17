@@ -11,6 +11,7 @@ const PROFILE = {
   brand: "ebagabe.dev",
   role: "Desenvolvedor Full Stack",
   since: 2023,
+  github: "https://github.com/eebagabe",
   bio: [
     "Desenvolvo software desde 2023, construindo sistemas web, aplicativos mobile e ferramentas desktop do zero até a produção.",
     "Trabalho com produtos reais: ERPs, e-commerce, telemedicina, gestão financeira com inteligência artificial e sistemas em tempo real. Gosto de código limpo, interfaces simples e entregas que resolvem o problema do cliente."

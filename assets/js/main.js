@@ -33,6 +33,8 @@
     <span><strong>Web, mobile</strong>e desktop</span>`;
   $("#aboutText").innerHTML = PROFILE.bio.map((p) => `<p>${p}</p>`).join("");
   $("#stackList").innerHTML = PROFILE.stack.map((s) => `<li class="tag">${s}</li>`).join("");
+  $("#footerGithub").href = PROFILE.github;
+  $("#footerGithub span").textContent = PROFILE.github.replace(/^https?:\/\//, "");
   $("#footerText").textContent = `© ${new Date().getFullYear()} ${PROFILE.brand}`;
 
   /* Serviços */

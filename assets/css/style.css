@@ -270,6 +270,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   border-top: 1px solid var(--border); font-size: 13px;
 }
 
+.footer-right { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.footer-link { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); transition: color 0.2s; }
+.footer-link:hover { color: var(--accent); }
+
 /* Reveal */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s, transform 0.7s; }
 .reveal.visible { opacity: 1; transform: none; }
