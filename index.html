@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ebagabe.dev</title>
+  <meta name="description" content="Desenvolvedor Full Stack: aplicativos, e-commerce, sistemas sob medida e integração de IA.">
+  <meta name="theme-color" content="#16181d">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2316181d'/><text x='16' y='22' font-family='monospace' font-size='16' font-weight='700' text-anchor='middle' fill='%239cc5a1'>e.</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#inicio" class="logo">ebagabe<span>.dev</span></a>
+      <nav class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#galeria">Galeria</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero container">
+      <p class="eyebrow" id="heroEyebrow"></p>
+      <h1 id="heroTitle"></h1>
+      <p class="lead" id="heroLead"></p>
+      <div class="hero-meta" id="heroMeta"></div>
+      <div class="hero-actions">
+        <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+        <a href="#servicos" class="btn btn-ghost">Serviços</a>
+      </div>
+    </section>
+
+    <section class="container banner-wrap" aria-label="Destaques">
+      <div class="banner" id="banner">
+        <div class="banner-track" id="bannerTrack"></div>
+        <div class="banner-controls">
+          <button class="banner-btn" id="bannerPrev" aria-label="Anterior">&#8249;</button>
+          <div class="banner-dots" id="bannerDots"></div>
+          <button class="banner-btn" id="bannerNext" aria-label="Próximo">&#8250;</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section container">
+      <div class="section-head">
+        <span class="section-index">01</span>
+        <h2>Sobre mim</h2>
+      </div>
+      <div class="about">
+        <div class="about-text" id="aboutText"></div>
+        <div class="about-stack">
+          <h3>Tecnologias</h3>
+          <ul class="tags" id="stackList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="section container">
+      <div class="section-head">
+        <span class="section-index">02</span>
+        <h2>Serviços</h2>
+      </div>
+      <div class="services" id="servicesGrid"></div>
+    </section>
+
+    <section id="projetos" class="section container">
+      <div class="section-head">
+        <span class="section-index">03</span>
+        <h2>Projetos</h2>
+      </div>
+
+      <h3 class="group-title">Projetos próprios</h3>
+      <div class="projects" id="projectsPersonal"></div>
+
+      <h3 class="group-title">Projetos empresariais</h3>
+      <p class="group-note">Sistemas desenvolvidos na empresa em que atuo. São projetos privados, por isso não possuem link público.</p>
+      <div class="projects" id="projectsCompany"></div>
+    </section>
+
+    <section id="galeria" class="section container">
+      <div class="section-head">
+        <span class="section-index">04</span>
+        <h2>Galeria</h2>
+      </div>
+      <div class="filters" id="galleryFilters"></div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span class="logo">ebagabe<span>.dev</span></span>
+    <span class="muted" id="footerText"></span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lbClose" aria-label="Fechar">&times;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">&#8249;</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Próximo">&#8250;</button>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
