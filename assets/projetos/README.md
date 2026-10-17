@@ -13,7 +13,7 @@ Cada pasta corresponde a um projeto (o nome da pasta é o `slug` em `assets/js/d
 
 Dicas:
 
-- Formatos: `.jpg`, `.png` ou `.webp`.
-- Banner do topo: proporção 16:7 (ex.: 1920x840). Nomeie como `banner.jpg` para ficar claro.
+- Formato: `.webp` (converter `.png`/`.jpg` antes de adicionar).
+- Banner do topo: proporção 16:7 (ex.: 1920x840). Nomeie como `banner.webp` para ficar claro.
 - Galeria: qualquer proporção (o layout é em colunas).
 - Depois de adicionar as imagens, elas são listadas no campo `images` (e `banner`) do projeto em `data.js`.
