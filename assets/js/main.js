@@ -54,7 +54,7 @@
       : `<span class="card-private">Projeto privado</span>`;
     return `
       <article class="card reveal">
-        <div class="card-media">${media}<span class="badge">${catLabel(p.category)}</span></div>
+        <div class="card-media${p.portrait ? " contain" : ""}">${media}<span class="badge">${catLabel(p.category)}</span></div>
         <div class="card-body">
           <h4>${p.name}</h4>
           <p>${p.summary}</p>
@@ -67,7 +67,7 @@
   $("#projectsCompany").innerHTML = PROJECTS.filter((p) => p.category === "empresa").map(cardHTML).join("");
 
   /* Banner */
-  const withCover = PROJECTS.filter((p) => p.banner || p.images.length);
+  const withCover = PROJECTS.filter((p) => !p.portrait && (p.banner || p.images.length));
   const slides = withCover.length ? withCover : PROJECTS.slice(0, 5);
   $("#bannerTrack").innerHTML = slides.map((p) => {
     const cover = p.banner || p.images[0];

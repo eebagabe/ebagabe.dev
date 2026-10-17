@@ -3,6 +3,7 @@
   Para adicionar imagens: coloque os arquivos em assets/projetos/<slug>/
   e liste os nomes em "images" do projeto correspondente.
   "banner" define a imagem usada no carrossel do topo (se vazio, usa a primeira de "images").
+  "portrait: true" para prints de celular: a capa não é cortada e o projeto fica fora do carrossel.
 */
 
 const PROFILE = {
@@ -37,8 +38,12 @@ const PROJECTS = [
     summary: "E-commerce para Maceió/AL com venda de roupas, tecnologia e mais.",
     stack: [".NET", "React"],
     links: [{ label: "lojalves.com.br", url: "https://lojalves.com.br" }],
-    banner: "",
-    images: []
+    banner: "lojalves-1.png",
+    images: [
+      "lojalves-1.png",
+      "lojalves-2.png",
+      "lojalves-3.png"
+    ]
   },
   {
     slug: "conectavidas",
@@ -47,8 +52,13 @@ const PROJECTS = [
     summary: "Sistema de telemedicina veterinária e humana, com atendimento online e gestão de consultas.",
     stack: ["Vue", ".NET"],
     links: [{ label: "conectavidasmed.com.br", url: "https://conectavidasmed.com.br" }],
-    banner: "",
-    images: []
+    banner: "conectavidas-1.png",
+    images: [
+      "conectavidas-1.png",
+      "conectavidas-2.png",
+      "conectavidas-3.png",
+      "conectavidas-4.png"
+    ]
   },
   {
     slug: "eleicoes-2026",
@@ -57,8 +67,12 @@ const PROJECTS = [
     summary: "Acompanhamento de votos em tempo real, consumindo dados diretamente do TSE.",
     stack: ["React", "TypeScript"],
     links: [{ label: "eleicoes.ghalves.com", url: "https://eleicoes.ghalves.com" }],
-    banner: "",
-    images: []
+    banner: "eleicoes-2026-1.png",
+    images: [
+      "eleicoes-2026-1.png",
+      "eleicoes-2026-2.png",
+      "eleicoes-2026-3.png"
+    ]
   },
   {
     slug: "roadmap",
@@ -67,8 +81,12 @@ const PROJECTS = [
     summary: "Site de roadmaps de estudo, com trilhas organizadas e acompanhamento de progresso.",
     stack: ["React", "TypeScript"],
     links: [{ label: "roadmap.ghalves.com", url: "https://roadmap.ghalves.com" }],
-    banner: "",
-    images: []
+    banner: "roadmap-1.png",
+    images: [
+      "roadmap-1.png",
+      "roadmap-2.png",
+      "roadmap-3.png"
+    ]
   },
   {
     slug: "finapp",
@@ -77,38 +95,25 @@ const PROJECTS = [
     summary: "App de finanças pessoais para controle de receitas, despesas e gerenciamento de dívidas.",
     stack: ["Flutter", "SQLite"],
     links: [{ label: "GitHub", url: "https://github.com/eebagabe/finapp" }],
-    banner: "",
-    images: []
+    portrait: true,
+    banner: "finapp-1.jpg",
+    images: [
+      "finapp-1.jpg",
+      "finapp-2.jpg",
+      "finapp-3.jpg"
+    ]
   },
   {
     slug: "windows-rec",
     name: "Windows-Rec",
     category: "pessoal",
-    summary: "Gravador de tela nativo para Windows, leve e rápido, escrito em Rust.",
+    summary: "Gravador de tela e gameplay nativo para Windows, com atalho global (F9) e encoding por hardware via NVIDIA NVENC.",
     stack: ["Rust", "Windows"],
     links: [{ label: "GitHub", url: "https://github.com/eebagabe/windows-rec" }],
-    banner: "",
-    images: []
-  },
-  {
-    slug: "simmer",
-    name: "Simmer",
-    category: "empresa",
-    summary: "ERP para empresa de energia solar em São Paulo: obras, estoque, financeiro e equipes.",
-    stack: ["Laravel", "Vue"],
-    links: [],
-    banner: "",
-    images: []
-  },
-  {
-    slug: "lunna",
-    name: "Lunna",
-    category: "empresa",
-    summary: "App e web app de gestão financeira com inteligência artificial integrada via MCP.",
-    stack: ["Laravel", "Vue", "Capacitor", "MCP / IA"],
-    links: [],
-    banner: "",
-    images: []
+    banner: "windows-rec-1.png",
+    images: [
+      "windows-rec-1.png"
+    ]
   },
   {
     slug: "ginastica-do-cerebro",
@@ -117,17 +122,26 @@ const PROJECTS = [
     summary: "Sistema de franquias e matriz educacional com gateway de pagamentos (ASAAS) e emissão de nota fiscal.",
     stack: ["Laravel", "Vue", "ASAAS", "NF-e"],
     links: [],
-    banner: "",
-    images: []
+    banner: "ginastica-do-cerebro-1.png",
+    images: [
+      "ginastica-do-cerebro-1.png",
+      "ginastica-do-cerebro-2.png",
+      "ginastica-do-cerebro-3.png",
+      "ginastica-do-cerebro-4.png"
+    ]
   },
   {
     slug: "cotacao-chines",
     name: "Sistema de Cotação Chinês",
     category: "empresa",
-    summary: "Plataforma de cotações com gestão de fornecedores, produtos e propostas.",
+    summary: "China Quotation System: gestão de clientes, produtos, loja da fábrica, orçamentos e câmbio para importação.",
     stack: ["Laravel", "Vue"],
     links: [],
-    banner: "",
-    images: []
+    banner: "cotacao-chines-2.png",
+    images: [
+      "cotacao-chines-1.png",
+      "cotacao-chines-2.png",
+      "cotacao-chines-3.png"
+    ]
   }
 ];
