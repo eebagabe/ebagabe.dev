@@ -6,11 +6,6 @@ Cada pasta corresponde a um projeto (o nome da pasta é o `slug` em `assets/js/d
 - `conectavidas/`
 - `sulminas/`
 - `roadmap/`
-- `eleicoes-2026/`
-- `finapp/`
-- `windows-rec/`
-- `ginastica-do-cerebro/`
-- `cotacao-chines/`
 
 Dicas:
 

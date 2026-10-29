@@ -41,7 +41,7 @@
   $("#heroLead").textContent = "Do planejamento ao deploy, você fala direto com quem desenvolve e acompanha cada etapa.";
   $("#heroMeta").innerHTML = `
     <span><strong>${years > 0 ? years + "+" : "1"}</strong>anos de experiência</span>
-    <span><strong>${PROJECTS.length}+</strong>projetos entregues</span>
+    <span><strong>Orçamento</strong>sem compromisso</span>
     <span><strong>Web, mobile</strong>e desktop</span>`;
   $("#aboutText").innerHTML = PROFILE.bio.map((p) => `<p>${p}</p>`).join("");
   $("#stackList").innerHTML = PROFILE.stack.map((s) => `<li class="tag">${s}</li>`).join("");
@@ -65,7 +65,7 @@
       : `<div class="ph">${initials(p.name)}</div>`;
     return `
       <button class="card reveal" data-idx="${i}" aria-label="Ver detalhes de ${p.name}">
-        <div class="card-media${p.portrait ? " contain" : ""}">${media}<span class="badge">${catLabel(p.category)}</span></div>
+        <div class="card-media">${media}<span class="badge">${catLabel(p.category)}</span></div>
         <div class="card-body">
           <h3>${p.name}</h3>
           <p>${p.summary}</p>

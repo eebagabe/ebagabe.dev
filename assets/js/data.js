@@ -3,7 +3,6 @@
   Para adicionar imagens: coloque os arquivos em assets/projetos/<slug>/
   e liste os nomes em "images" (prints desktop) e "mobile" (prints de celular).
   A primeira imagem de "images" é a capa do card.
-  "portrait: true" para apps mobile: a capa não é cortada.
   "category": "pessoal", "cliente" ou "empresa" (empresa = privado, sem link).
 */
 
@@ -75,52 +74,5 @@ const PROJECTS = [
     links: [{ label: "roadmap.ghalves.com", url: "https://roadmap.ghalves.com" }],
     images: ["roadmap-1.webp", "roadmap-2.webp", "roadmap-3.webp"],
     mobile: ["roadmap-mobile-1.webp", "roadmap-mobile-2.webp"]
-  },
-  {
-    slug: "eleicoes-2026",
-    name: "Eleições 2026",
-    category: "pessoal",
-    summary: "Acompanhamento de votos em tempo real, consumindo dados diretamente do TSE.",
-    stack: ["React", "TypeScript"],
-    links: [{ label: "eleicoes.ghalves.com", url: "https://eleicoes.ghalves.com" }],
-    images: ["eleicoes-2026-1.webp", "eleicoes-2026-2.webp", "eleicoes-2026-3.webp"]
-  },
-  {
-    slug: "finapp",
-    name: "Finapp",
-    category: "pessoal",
-    summary: "App de finanças pessoais para controle de receitas, despesas e gerenciamento de dívidas.",
-    stack: ["Flutter", "SQLite"],
-    links: [{ label: "GitHub", url: "https://github.com/eebagabe/finapp" }],
-    portrait: true,
-    images: [],
-    mobile: ["finapp-1.webp", "finapp-2.webp", "finapp-3.webp"]
-  },
-  {
-    slug: "windows-rec",
-    name: "Windows-Rec",
-    category: "pessoal",
-    summary: "Gravador de tela e gameplay nativo para Windows, com atalho global (F9) e encoding por hardware via NVIDIA NVENC.",
-    stack: ["Rust", "Windows"],
-    links: [{ label: "GitHub", url: "https://github.com/eebagabe/windows-rec" }],
-    images: ["windows-rec-1.webp"]
-  },
-  {
-    slug: "ginastica-do-cerebro",
-    name: "Ginástica do Cérebro",
-    category: "empresa",
-    summary: "Sistema de franquias e matriz educacional com gateway de pagamentos (ASAAS) e emissão de nota fiscal.",
-    stack: ["Laravel", "Vue", "ASAAS", "NF-e"],
-    links: [],
-    images: ["ginastica-do-cerebro-1.webp", "ginastica-do-cerebro-2.webp", "ginastica-do-cerebro-3.webp", "ginastica-do-cerebro-4.webp"]
-  },
-  {
-    slug: "cotacao-chines",
-    name: "Sistema de Cotação Chinês",
-    category: "empresa",
-    summary: "China Quotation System: gestão de clientes, produtos, loja da fábrica, orçamentos e câmbio para importação.",
-    stack: ["Laravel", "Vue"],
-    links: [],
-    images: ["cotacao-chines-2.webp", "cotacao-chines-1.webp", "cotacao-chines-3.webp"]
   }
 ];
