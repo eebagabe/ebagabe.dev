@@ -4,8 +4,9 @@ Cada pasta corresponde a um projeto (o nome da pasta é o `slug` em `assets/js/d
 
 - `lojalves/`
 - `conectavidas/`
-- `eleicoes-2026/`
+- `sulminas/`
 - `roadmap/`
+- `eleicoes-2026/`
 - `finapp/`
 - `windows-rec/`
 - `ginastica-do-cerebro/`
@@ -14,6 +15,6 @@ Cada pasta corresponde a um projeto (o nome da pasta é o `slug` em `assets/js/d
 Dicas:
 
 - Formato: `.webp` (converter `.png`/`.jpg` antes de adicionar).
-- Banner do topo: proporção 16:7 (ex.: 1920x840). Nomeie como `banner.webp` para ficar claro.
-- Galeria: qualquer proporção (o layout é em colunas).
-- Depois de adicionar as imagens, elas são listadas no campo `images` (e `banner`) do projeto em `data.js`.
+- Prints desktop: largura de 1600px, listados em `images`. O primeiro é a capa do card.
+- Prints de celular: largura de 520px, nomeados `<slug>-mobile-N.webp` e listados em `mobile`.
+- Todos aparecem na janela de detalhes do projeto.

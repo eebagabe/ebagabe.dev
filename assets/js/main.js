@@ -5,7 +5,9 @@
   const imgPath = (slug, file) => `${IMG_BASE}${slug}/${file}`;
   const initials = (name) => name.split(/\s+/).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
   const tags = (list, cls = "tag") => list.map((t) => `<span class="${cls}">${t}</span>`).join("");
-  const catLabel = (c) => (c === "empresa" ? "Empresarial" : "Projeto próprio");
+  const catLabel = (c) => ({ empresa: "Empresarial", cliente: "Cliente" }[c] || "Projeto próprio");
+  const waLink = (msg) => `https://wa.me/${PROFILE.whatsapp}?text=${encodeURIComponent(msg)}`;
+  const WA_DEFAULT = "Olá, Gabriel! Vi seu portfólio e quero conversar sobre um projeto.";
 
   /* Tema */
   const root = document.documentElement;
@@ -22,11 +24,21 @@
     setStored(next);
   });
 
+  /* Contato */
+  document.querySelectorAll("[data-wa]").forEach((a) => {
+    a.href = waLink(WA_DEFAULT);
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
+  $("#contactInstagram").href = PROFILE.instagram;
+  $("#footerInstagram").href = PROFILE.instagram;
+  $("#contactPhone").textContent = `WhatsApp ${PROFILE.whatsappLabel}`;
+
   /* Hero e sobre */
   const years = new Date().getFullYear() - PROFILE.since;
   $("#heroEyebrow").textContent = `${PROFILE.role} · desde ${PROFILE.since}`;
-  $("#heroTitle").innerHTML = `Olá, sou ${PROFILE.name}. <em>Crio sistemas, apps e lojas virtuais que funcionam de verdade.</em>`;
-  $("#heroLead").textContent = "Do planejamento ao deploy: aplicativos, e-commerce, sistemas sob medida, infraestrutura e integração de inteligência artificial.";
+  $("#heroTitle").innerHTML = `Olá, sou ${PROFILE.name}. <em>Crio sites, sistemas e lojas virtuais que trazem resultado.</em>`;
+  $("#heroLead").textContent = "Do planejamento ao deploy, você fala direto com quem desenvolve e acompanha cada etapa.";
   $("#heroMeta").innerHTML = `
     <span><strong>${years > 0 ? years + "+" : "1"}</strong>anos de experiência</span>
     <span><strong>${PROJECTS.length}+</strong>projetos entregues</span>
@@ -34,7 +46,6 @@
   $("#aboutText").innerHTML = PROFILE.bio.map((p) => `<p>${p}</p>`).join("");
   $("#stackList").innerHTML = PROFILE.stack.map((s) => `<li class="tag">${s}</li>`).join("");
   $("#footerGithub").href = PROFILE.github;
-  $("#footerGithub span").textContent = PROFILE.github.replace(/^https?:\/\//, "");
   $("#footerText").textContent = `© ${new Date().getFullYear()} ${PROFILE.brand}`;
 
   /* Serviços */
@@ -46,120 +57,56 @@
     </div>`).join("");
 
   /* Projetos */
-  const cardHTML = (p) => {
-    const cover = p.banner || p.images[0];
-    const media = cover
-      ? `<img src="${imgPath(p.slug, cover)}" alt="${p.name}" loading="lazy">`
+  const cover = (p) => p.images[0] || (p.mobile || [])[0];
+  $("#projects").innerHTML = PROJECTS.map((p, i) => {
+    const c = cover(p);
+    const media = c
+      ? `<img src="${imgPath(p.slug, c)}" alt="${p.name}" loading="lazy">`
       : `<div class="ph">${initials(p.name)}</div>`;
-    const footer = p.links.length
-      ? `<div class="card-links">${p.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("")}</div>`
-      : `<span class="card-private">Projeto privado</span>`;
     return `
-      <article class="card reveal">
+      <button class="card reveal" data-idx="${i}" aria-label="Ver detalhes de ${p.name}">
         <div class="card-media${p.portrait ? " contain" : ""}">${media}<span class="badge">${catLabel(p.category)}</span></div>
         <div class="card-body">
-          <h4>${p.name}</h4>
-          <p>${p.summary}</p>
-          <div class="tag-row">${tags(p.stack)}</div>
-          ${footer}
-        </div>
-      </article>`;
-  };
-  $("#projectsPersonal").innerHTML = PROJECTS.filter((p) => p.category === "pessoal").map(cardHTML).join("");
-  $("#projectsCompany").innerHTML = PROJECTS.filter((p) => p.category === "empresa").map(cardHTML).join("");
-
-  /* Banner */
-  const withCover = PROJECTS.filter((p) => !p.portrait && (p.banner || p.images.length));
-  const slides = withCover.length ? withCover : PROJECTS.slice(0, 5);
-  $("#bannerTrack").innerHTML = slides.map((p) => {
-    const cover = p.banner || p.images[0];
-    const media = cover
-      ? `<img src="${imgPath(p.slug, cover)}" alt="${p.name}">`
-      : `<div class="slide-placeholder"><span>${initials(p.name)}</span></div>`;
-    return `
-      <div class="slide">
-        ${media}
-        <div class="slide-info">
-          <div class="tag-row">${tags(p.stack)}</div>
           <h3>${p.name}</h3>
           <p>${p.summary}</p>
+          <div class="tag-row">${tags(p.stack)}</div>
+          <span class="card-more">Ver detalhes →</span>
         </div>
-      </div>`;
+      </button>`;
   }).join("");
 
-  let current = 0;
-  let timer;
-  const dots = $("#bannerDots");
-  dots.innerHTML = slides.map((_, i) => `<button aria-label="Slide ${i + 1}"></button>`).join("");
-  const goTo = (i) => {
-    current = (i + slides.length) % slides.length;
-    $("#bannerTrack").style.transform = `translateX(-${current * 100}%)`;
-    dots.querySelectorAll("button").forEach((d, idx) => d.classList.toggle("active", idx === current));
+  /* Detalhes do projeto */
+  const detail = $("#detail");
+  const openDetail = (p) => {
+    const links = p.links.length
+      ? p.links.map((l) => `<a class="btn btn-ghost btn-sm" href="${l.url}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("")
+      : `<span class="card-private">Projeto privado, sem link público</span>`;
+    const desktop = p.images.map((f) => `<img src="${imgPath(p.slug, f)}" alt="${p.name}" loading="lazy">`).join("");
+    const mobile = (p.mobile || []).map((f) => `<img src="${imgPath(p.slug, f)}" alt="${p.name} no celular" loading="lazy">`).join("");
+    $("#detailBody").innerHTML = `
+      <span class="badge-inline">${catLabel(p.category)}</span>
+      <h2 id="detailTitle">${p.name}</h2>
+      <p class="detail-summary">${p.summary}</p>
+      <div class="tag-row">${tags(p.stack)}</div>
+      <div class="detail-links">${links}</div>
+      ${desktop ? `<div class="detail-shots">${desktop}</div>` : ""}
+      ${mobile ? `<div class="detail-mobile">${mobile}</div>` : ""}
+      <div class="detail-cta">
+        <p>Quer algo parecido para o seu negócio?</p>
+        <a class="btn btn-primary" href="${waLink(`Olá, Gabriel! Vi o projeto ${p.name} no seu portfólio e quero algo parecido.`)}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><use href="#wa"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>`;
+    detail.showModal();
+    detail.scrollTop = 0;
   };
-  const restart = () => { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 6000); };
-  dots.querySelectorAll("button").forEach((d, i) => d.addEventListener("click", () => { goTo(i); restart(); }));
-  $("#bannerPrev").addEventListener("click", () => { goTo(current - 1); restart(); });
-  $("#bannerNext").addEventListener("click", () => { goTo(current + 1); restart(); });
-  $("#banner").addEventListener("mouseenter", () => clearInterval(timer));
-  $("#banner").addEventListener("mouseleave", restart);
-  goTo(0);
-  restart();
-
-  /* Galeria */
-  const allImages = PROJECTS.flatMap((p) => p.images.map((file) => ({ slug: p.slug, name: p.name, src: imgPath(p.slug, file) })));
-  const galleryProjects = PROJECTS.filter((p) => p.images.length);
-  let filter = "todos";
-  let visible = [];
-
-  const renderFilters = () => {
-    const opts = [{ slug: "todos", name: "Todos" }, ...galleryProjects];
-    $("#galleryFilters").innerHTML = opts.map((o) =>
-      `<button class="filter${o.slug === filter ? " active" : ""}" data-slug="${o.slug}">${o.name}</button>`).join("");
-    $("#galleryFilters").querySelectorAll(".filter").forEach((b) =>
-      b.addEventListener("click", () => { filter = b.dataset.slug; renderFilters(); renderGallery(); }));
-  };
-
-  const renderGallery = () => {
-    const g = $("#gallery");
-    if (!allImages.length) {
-      g.innerHTML = PROJECTS.slice(0, 6).map((p) => `
-        <div class="g-empty"><div><strong>${p.name}</strong>em breve</div></div>`).join("");
-      return;
-    }
-    visible = filter === "todos" ? allImages : allImages.filter((i) => i.slug === filter);
-    g.innerHTML = visible.map((img, idx) => `
-      <figure class="g-item" data-idx="${idx}">
-        <img src="${img.src}" alt="${img.name}" loading="lazy">
-        <figcaption>${img.name}</figcaption>
-      </figure>`).join("");
-    g.querySelectorAll(".g-item").forEach((el) => el.addEventListener("click", () => openLb(+el.dataset.idx)));
-  };
-
-  if (galleryProjects.length > 1) renderFilters();
-  renderGallery();
-
-  /* Lightbox */
-  const lb = $("#lightbox");
-  let lbIdx = 0;
-  const showLb = () => {
-    const img = visible[lbIdx];
-    $("#lbImg").src = img.src;
-    $("#lbImg").alt = img.name;
-    $("#lbCaption").textContent = `${img.name} · ${lbIdx + 1} / ${visible.length}`;
-  };
-  const openLb = (i) => { lbIdx = i; showLb(); lb.classList.add("open"); lb.setAttribute("aria-hidden", "false"); };
-  const closeLb = () => { lb.classList.remove("open"); lb.setAttribute("aria-hidden", "true"); };
-  const stepLb = (d) => { lbIdx = (lbIdx + d + visible.length) % visible.length; showLb(); };
-  $("#lbClose").addEventListener("click", closeLb);
-  $("#lbPrev").addEventListener("click", () => stepLb(-1));
-  $("#lbNext").addEventListener("click", () => stepLb(1));
-  lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
-  document.addEventListener("keydown", (e) => {
-    if (!lb.classList.contains("open")) return;
-    if (e.key === "Escape") closeLb();
-    if (e.key === "ArrowLeft") stepLb(-1);
-    if (e.key === "ArrowRight") stepLb(1);
+  $("#projects").addEventListener("click", (e) => {
+    const card = e.target.closest(".card");
+    if (card) openDetail(PROJECTS[+card.dataset.idx]);
   });
+  $("#detailClose").addEventListener("click", () => detail.close());
+  detail.addEventListener("click", (e) => { if (e.target === detail) detail.close(); });
 
   /* Animação de entrada */
   const io = new IntersectionObserver((entries) => {
