@@ -22,7 +22,7 @@ export const PROJECTS: Project[] = [
     slug: "conectavidas",
     name: "ConectaVidas",
     description: "Plataforma de telemedicina veterinária e humana, com planos de assinatura, teleconsultas e videoaulas.",
-    stack: ["Vue", ".NET"],
+    stack: ["Vue", "Laravel"],
     link: "https://conectavidasmed.com.br",
     shots: shots("conectavidas", "ConectaVidas", ["página inicial", "serviços oferecidos", "planos de assinatura"], ["página inicial", "planos de assinatura"]),
   },
