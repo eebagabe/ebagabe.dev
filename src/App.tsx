@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import Projects from "./Projects";
 import { PHONE_DISPLAY, WHATSAPP_URL } from "./whatsapp";
 
 const NAV = [
   { href: "#servicos", label: "Serviços" },
+  { href: "#projetos", label: "Projetos" },
   { href: "#processo", label: "Como funciona" },
   { href: "#beneficios", label: "Benefícios" },
 ];
@@ -168,6 +170,8 @@ export default function App() {
             </ul>
           </div>
         </section>
+
+        <Projects />
 
         <section className="section dark" id="processo" aria-labelledby="h-proc">
           <div className="wrap">
