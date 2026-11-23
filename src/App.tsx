@@ -1,64 +1,86 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Projects from "./Projects";
 import { PHONE_DISPLAY, WHATSAPP_URL } from "./whatsapp";
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/ebagabe/";
+const GITHUB_URL = "https://github.com/eebagabe";
+
 const NAV = [
-  { href: "#servicos", label: "Serviços" },
+  { href: "#sobre", label: "Sobre" },
+  { href: "#experiencia", label: "Experiência" },
   { href: "#projetos", label: "Projetos" },
-  { href: "#processo", label: "Como funciona" },
-  { href: "#beneficios", label: "Benefícios" },
+  { href: "#codigo", label: "Código" },
+  { href: "#contato", label: "Contato" },
 ];
 
-const SERVICES = [
+const SKILLS = [
+  { title: "Back-end", items: ["Laravel", "PHP", "NestJS", "Node.js", "APIs REST", "Filas"] },
+  { title: "Front-end e mobile", items: ["Vue.js", "Nuxt", "Quasar", "React", "Angular", "TypeScript", "Tailwind", "Capacitor"] },
+  { title: "Dados e nuvem", items: ["PostgreSQL", "MySQL", "Modelagem de dados", "AWS (EC2, RDS, S3, Route 53)", "Linux", "Git"] },
+  { title: "Qualidade e IA", items: ["PHPUnit", "Cypress", "MCP", "Integração com LLMs", "Asaas", "PlugNotas", "Claude Code", "Codex", "Google Antigravity", "Grok"] },
+];
+
+const JOBS = [
   {
-    n: "01",
-    title: "Sites para negócios",
-    text: "Páginas rápidas, claras e pensadas para o celular, com o essencial para o cliente entender o que você faz e chamar no WhatsApp.",
+    company: "Softpar",
+    role: "Desenvolvedor Full Stack · Remoto",
+    period: "jan/2025 até hoje",
+    items: [
+      "App mobile (Android/iOS) de finanças pessoais com assistente de IA via MCP: o chat cria, edita e consulta lançamentos, gera relatórios e define metas. Cerca de 200 usuários ativos.",
+      "Plataforma de gestão de franquias: contratos, matrículas, cobranças (Asaas), emissão de NF (PlugNotas) e kanban interno.",
+      "Plataforma de locação náutica projetada para alta concorrência, com pagamentos, notificações e filas de e-mail.",
+      "Implantação de testes automatizados (PHPUnit, Cypress, Vue) em sistemas que só tinham teste manual, com 100% de cobertura em módulos novos e legados.",
+      "Otimização de performance com índices SQL, cache e UI otimista, modelagem PostgreSQL, specs técnicas e deploy e sustentação na AWS.",
+      "Módulos de um ERP para empresa de energia solar e de uma plataforma para academias (Laravel + Vue).",
+    ],
   },
   {
-    n: "02",
-    title: "Sistemas sob medida",
-    text: "Ferramentas web feitas para a rotina do seu negócio: cadastros, painéis e controles no lugar de planilhas e anotações soltas.",
+    company: "Imagine Apps",
+    role: "Desenvolvedor Full Stack",
+    period: "ago/2024 a jan/2025",
+    items: ["Funcionalidades de uma plataforma para incorporadoras: corretores vendem unidades e clientes acompanham a compra (Angular + NestJS)."],
   },
   {
-    n: "03",
-    title: "Integrações",
-    text: "Conecto o site ou sistema ao que você já usa, como WhatsApp, formulários e outros serviços, conforme a necessidade do projeto.",
+    company: "Gajoy",
+    role: "Desenvolvedor Full Stack · Maceió",
+    period: "jan/2024 a ago/2024",
+    items: ["Landing pages, e-commerces e sites institucionais para clientes (React + PHP), do levantamento de requisitos ao deploy."],
+  },
+  {
+    company: "Doity",
+    role: "Desenvolvedor (bolsista)",
+    period: "jun/2023 a dez/2023",
+    items: ["Plataforma de gestão de eventos (CakePHP) e desenvolvimento de um módulo de CRM."],
   },
 ];
 
-const STEPS = [
-  { n: "1", title: "Conversa", text: "Você conta sobre o negócio e o que precisa, direto pelo WhatsApp." },
-  { n: "2", title: "Proposta", text: "Envio uma proposta clara, com escopo, prazo e valor, sem compromisso." },
-  { n: "3", title: "Entrega", text: "Desenvolvo, você acompanha e o projeto vai ao ar pronto para uso." },
-];
-
-const BENEFITS = [
+const REPOS = [
   {
-    title: "Seja encontrado no Google",
-    text: "Estrutura técnica e conteúdo organizados para facilitar que seu negócio apareça quando as pessoas buscam.",
+    name: "windows-rec",
+    lang: "C# · .NET",
+    text: "Gravador de tela para Windows com áudio do sistema e microfone, detecção de janela e encoder por GPU.",
   },
   {
-    title: "Contato direto por WhatsApp",
-    text: "Botões e chamadas visíveis para o cliente falar com você em um toque, sem formulários longos.",
+    name: "static_site_generator",
+    lang: "C#",
+    text: "Gerador de sites estáticos feito do zero, com parser próprio de Markdown para HTML e testes unitários.",
   },
   {
-    title: "Funciona bem no celular",
-    text: "Layout pensado primeiro para telas pequenas, leve e fácil de navegar.",
+    name: "ai_agent",
+    lang: "C#",
+    text: "Agente de IA que usa o Gemini.",
   },
   {
-    title: "Tudo mais simples",
-    text: "Menos retrabalho e menos bagunça: informações e processos do negócio em um só lugar.",
+    name: "eleicoes-2026",
+    lang: "TypeScript",
+    text: "Projeto independente com dados oficiais do TSE sobre as eleições de 2026.",
   },
 ];
 
-function Cta({ children, variant = "primary" }: { children: string; variant?: "primary" | "dark" }) {
+function Ext({ href, className, children }: { href: string; className?: string; children: ReactNode }) {
   return (
-    <a className={`btn btn-${variant}`} href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+    <a className={className} href={href} target="_blank" rel="noopener noreferrer">
       {children}
-      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M7 17 17 7M8 7h9v9" />
-      </svg>
     </a>
   );
 }
@@ -69,26 +91,11 @@ function HeroArt() {
       <div className="art-window">
         <div className="art-bar">
           <i /><i /><i />
-          <span>seunegocio.com.br</span>
+          <span>conectavidasmed.com.br</span>
         </div>
-        <div className="art-body">
-          <div className="art-line w60" />
-          <div className="art-line w90 tall" />
-          <div className="art-line w40" />
-          <div className="art-btn">Chamar no WhatsApp</div>
-          <div className="art-cards">
-            <div /><div /><div />
-          </div>
-        </div>
+        <img src="/projetos/conectavidas/conectavidas-1.webp" alt="" width="1440" height="900" />
       </div>
-      <div className="art-chip chip-a">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></svg>
-        Google
-      </div>
-      <div className="art-chip chip-b">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a8 8 0 0 1-11.7 7L4 20l1.1-5A8 8 0 1 1 21 12Z" /></svg>
-        WhatsApp
-      </div>
+      <img className="art-phone" src="/projetos/roadmap/roadmap-mobile-1.webp" alt="" />
     </div>
   );
 }
@@ -110,7 +117,7 @@ export default function App() {
       <header className="header">
         <div className="wrap header-in">
           <a className="logo" href="#topo" aria-label="ebagabe, início">
-            ebagabe<span>.</span>
+            ebagabe<span />
           </a>
           <nav id="menu" className={`nav ${open ? "is-open" : ""}`} aria-label="Principal">
             {NAV.map((l) => (
@@ -118,9 +125,7 @@ export default function App() {
             ))}
           </nav>
           <div className="header-actions">
-            <a className="btn btn-primary btn-sm" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              Orçamento grátis
-            </a>
+            <Ext className="btn btn-primary btn-sm" href={LINKEDIN_URL}>LinkedIn</Ext>
             <button
               type="button"
               className="burger"
@@ -139,90 +144,115 @@ export default function App() {
         <section className="hero grid-bg" id="topo" aria-labelledby="h-hero">
           <div className="wrap hero-in">
             <div className="hero-copy">
-              <p className="eyebrow">Estúdio de software enxuto</p>
+              <p className="eyebrow">Desenvolvedor Full Stack</p>
               <h1 id="h-hero">
-                Crio sites e sistemas para <em>negócios</em>.
+                Oi, eu sou <em>Gabriel Alves</em>.
               </h1>
               <p className="lead">
-                Mais clientes pelo Google e WhatsApp. Um site claro, rápido e feito para o seu cliente chamar você sem complicação.
+                Construo sistemas web e mobile com Laravel, PHP e Vue, do banco de dados ao deploy na AWS. Maceió, AL.
               </p>
               <div className="hero-cta">
-                <Cta>Pedir orçamento grátis</Cta>
-                <p className="phone">ou chame em <strong>{PHONE_DISPLAY}</strong></p>
+                <a className="btn btn-primary" href="#projetos">Ver projetos</a>
+                <Ext className="btn btn-ghost" href={GITHUB_URL}>GitHub</Ext>
               </div>
             </div>
             <HeroArt />
           </div>
         </section>
 
-        <section className="section" id="servicos" aria-labelledby="h-serv">
+        <section className="section" id="sobre" aria-labelledby="h-sobre">
           <div className="wrap">
-            <p className="eyebrow">O que eu faço</p>
-            <h2 id="h-serv">Sites e sistemas, sem enrolação.</h2>
-            <ul className="cards">
-              {SERVICES.map((s) => (
-                <li className="card" key={s.n}>
-                  <span className="card-n">{s.n}</span>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
+            <p className="eyebrow">Sobre mim</p>
+            <h2 id="h-sobre">Da API à interface.</h2>
+            <p className="lead about">
+              Há mais de 3 anos construo sistemas em produção com Laravel, PHP e Vue, com foco em APIs, pagamentos integrados e IA aplicada.
+              Desenvolvo integrações com LLMs via MCP e uso agentes de IA no dia a dia.
+            </p>
+            <ul className="cards cards-4">
+              {SKILLS.map((g) => (
+                <li className="card" key={g.title}>
+                  <h3>{g.title}</h3>
+                  <ul className="pstack">
+                    {g.items.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
                 </li>
               ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="section alt" id="experiencia" aria-labelledby="h-exp">
+          <div className="wrap">
+            <p className="eyebrow">Experiência</p>
+            <h2 id="h-exp">Onde trabalhei.</h2>
+            <ol className="jobs">
+              {JOBS.map((j) => (
+                <li className="card job" key={j.company}>
+                  <div>
+                    <h3>{j.company}</h3>
+                    <p>{j.role}</p>
+                    <p className="job-period">{j.period}</p>
+                  </div>
+                  <ul>
+                    {j.items.map((t) => <li key={t}>{t}</li>)}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+            <ul className="cards cards-4">
+              <li className="card">
+                <h3>Formação</h3>
+                <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, Estácio. jun/2024 a jun/2027 (previsão).</p>
+              </li>
+              <li className="card">
+                <h3>Idiomas</h3>
+                <p>Português (nativo), inglês (intermediário) e espanhol (intermediário).</p>
+              </li>
             </ul>
           </div>
         </section>
 
         <Projects />
 
-        <section className="section dark" id="processo" aria-labelledby="h-proc">
+        <section className="section alt" id="codigo" aria-labelledby="h-cod">
           <div className="wrap">
-            <p className="eyebrow">Como funciona</p>
-            <h2 id="h-proc">Três passos simples.</h2>
-            <ol className="steps">
-              {STEPS.map((s) => (
-                <li key={s.n}>
-                  <span className="step-n">{s.n}</span>
-                  <h3>{s.title}</h3>
-                  <p>{s.text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="section" id="beneficios" aria-labelledby="h-ben">
-          <div className="wrap">
-            <p className="eyebrow">Benefícios</p>
-            <h2 id="h-ben">Facilite ser encontrado e ser chamado.</h2>
+            <p className="eyebrow">Código</p>
+            <h2 id="h-cod">Também no GitHub.</h2>
             <ul className="cards cards-4">
-              {BENEFITS.map((b) => (
-                <li className="card" key={b.title}>
-                  <h3>{b.title}</h3>
-                  <p>{b.text}</p>
+              {REPOS.map((r) => (
+                <li key={r.name}>
+                  <Ext className="card repo" href={`${GITHUB_URL}/${r.name}`}>
+                    <h3>{r.name}</h3>
+                    <p>{r.text}</p>
+                    <span className="card-n">{r.lang}</span>
+                  </Ext>
                 </li>
               ))}
             </ul>
-            <p className="note">
-              Um bom site ajuda, mas não há garantia de posição no Google nem de quantidade de contatos: os resultados dependem de vários fatores.
-            </p>
+            <Ext className="btn btn-ghost pall" href={`${GITHUB_URL}?tab=repositories`}>Ver todos os repositórios</Ext>
           </div>
         </section>
 
-        <section className="final" aria-labelledby="h-final">
+        <section className="final dark" id="contato" aria-labelledby="h-final">
           <div className="wrap final-in">
-            <h2 id="h-final">Vamos conversar sobre o seu projeto?</h2>
-            <p className="lead">Conte o que você precisa pelo WhatsApp e receba um orçamento grátis.</p>
-            <Cta variant="dark">Pedir orçamento pelo WhatsApp</Cta>
+            <p className="eyebrow">Contato</p>
+            <h2 id="h-final">Vamos trabalhar juntos?</h2>
+            <p className="lead">Tem uma vaga ou quer saber mais sobre o meu trabalho? Fale comigo.</p>
+            <div className="hero-cta">
+              <Ext className="btn btn-light" href={LINKEDIN_URL}>Falar no LinkedIn</Ext>
+              <Ext className="btn btn-outline" href={WHATSAPP_URL}>WhatsApp</Ext>
+            </div>
           </div>
         </section>
       </main>
 
       <footer className="footer">
         <div className="wrap footer-in">
-          <p className="logo">ebagabe<span>.</span></p>
+          <p className="logo">ebagabe<span /></p>
           <p>ebagabe.dev · {PHONE_DISPLAY}</p>
-          <a href="https://instagram.com/ebagabe.dev" target="_blank" rel="noopener noreferrer">
-            Instagram @ebagabe.dev
-          </a>
+          <p>
+            <Ext href={LINKEDIN_URL}>LinkedIn</Ext> · <Ext href={GITHUB_URL}>GitHub</Ext> · <Ext href="https://instagram.com/ebagabe.dev">Instagram</Ext>
+          </p>
         </div>
       </footer>
     </>

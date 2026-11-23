@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FEATURED_COUNT, PROJECTS, type Project } from "./projects";
+import { PROJECTS, type Project } from "./projects";
 
 function hostOf(url: string) {
   return url.replace(/^https?:\/\//, "").replace(/\/$/, "");
@@ -93,29 +93,20 @@ function ProjectDialog({ project, onClose }: { project: Project | null; onClose:
 }
 
 export default function Projects() {
-  const [all, setAll] = useState(false);
   const [active, setActive] = useState<Project | null>(null);
-  const firstExtra = useRef<HTMLButtonElement>(null);
   const opener = useRef<HTMLButtonElement | null>(null);
-  const list = all ? PROJECTS : PROJECTS.slice(0, FEATURED_COUNT);
-  const hasMore = PROJECTS.length > FEATURED_COUNT;
-
-  useEffect(() => {
-    if (all) firstExtra.current?.focus();
-  }, [all]);
 
   return (
     <section className="section projects" id="projetos" aria-labelledby="h-proj">
       <div className="wrap">
         <p className="eyebrow">Projetos</p>
-        <h2 id="h-proj">Alguns trabalhos recentes.</h2>
-        <ul className="pgrid" id="lista-projetos">
-          {list.map((p, i) => (
+        <h2 id="h-proj">Projetos selecionados.</h2>
+        <ul className="pgrid">
+          {PROJECTS.map((p) => (
             <li key={p.slug}>
               <button
                 type="button"
                 className="pcard"
-                ref={i === FEATURED_COUNT ? firstExtra : undefined}
                 aria-haspopup="dialog"
                 onClick={(e) => {
                   opener.current = e.currentTarget;
@@ -140,17 +131,6 @@ export default function Projects() {
             </li>
           ))}
         </ul>
-        {hasMore && (
-          <button
-            type="button"
-            className="btn btn-ghost pall"
-            aria-expanded={all}
-            aria-controls="lista-projetos"
-            onClick={() => setAll((a) => !a)}
-          >
-            {all ? "Ver menos" : `Ver mais (${PROJECTS.length - FEATURED_COUNT})`}
-          </button>
-        )}
       </div>
       <ProjectDialog
         project={active}

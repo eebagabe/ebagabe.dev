@@ -52,5 +52,3 @@ export const PROJECTS: Project[] = [
     shots: shots("roadmap", "Roadmap", ["trilhas disponíveis", "trilha Java Backend", "mapa da trilha React"], ["trilhas disponíveis", "trilha Java Backend"]),
   },
 ];
-
-export const FEATURED_COUNT = 3;
