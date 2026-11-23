@@ -143,7 +143,7 @@ h3 { font-size: 1.4rem; line-height: 1.2; }
 .pstack { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .pstack li { font-weight: 600; font-size: .85rem; background: var(--soft); border-radius: 999px; padding: 4px 12px; }
 
-@media (min-width: 760px) {
+@media (min-width: 900px) {
   .pgrid { grid-template-columns: repeat(2, 1fr); }
   .pd-in { padding: 28px; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
   .pd-head { grid-column: 1 / -1; }
