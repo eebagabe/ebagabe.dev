@@ -13,6 +13,21 @@ const NAV = [
   { href: "#contato", label: "Contato" },
 ];
 
+const FOCUS = [
+  {
+    title: "IA aplicada a produtos",
+    text: "Integro LLMs a sistemas via MCP. Exemplo: um assistente que cria lançamentos, gera relatórios e define metas em um app de finanças.",
+  },
+  {
+    title: "Desenvolvimento com agentes",
+    text: "Uso agentes de IA no dia a dia para acelerar entregas, com specs técnicas e testes automatizados no processo.",
+  },
+  {
+    title: "Sistemas de ponta a ponta",
+    text: "Aplicações web e mobile, APIs, pagamentos, filas e notificações, da modelagem de dados à operação na nuvem.",
+  },
+];
+
 const SKILLS = [
   { title: "Back-end", items: ["Laravel", "PHP", "NestJS", "Node.js", "APIs REST", "Filas"] },
   { title: "Front-end e mobile", items: ["Vue.js", "Nuxt", "Quasar", "React", "Angular", "TypeScript", "Tailwind", "Capacitor"] },
@@ -149,7 +164,7 @@ export default function App() {
                 Oi, eu sou <em>Gabriel Alves</em>.
               </h1>
               <p className="lead">
-                Construo sistemas web e mobile com Laravel, PHP e Vue, do banco de dados ao deploy na AWS. Maceió, AL.
+                Desenvolvo sistemas web e mobile de ponta a ponta e levo inteligência artificial para produtos que as pessoas usam no dia a dia.
               </p>
               <div className="hero-cta">
                 <a className="btn btn-primary" href="#projetos">Ver projetos</a>
@@ -163,11 +178,19 @@ export default function App() {
         <section className="section" id="sobre" aria-labelledby="h-sobre">
           <div className="wrap">
             <p className="eyebrow">Sobre mim</p>
-            <h2 id="h-sobre">Da API à interface.</h2>
+            <h2 id="h-sobre">Software e IA, do plano à produção.</h2>
             <p className="lead about">
-              Há mais de 3 anos construo sistemas em produção com Laravel, PHP e Vue, com foco em APIs, pagamentos integrados e IA aplicada.
-              Desenvolvo integrações com LLMs via MCP e uso agentes de IA no dia a dia.
+              Há mais de 3 anos construo sistemas em produção, com foco em APIs, pagamentos integrados e IA aplicada.
+              Participo de todo o ciclo: especificação, modelagem de dados, desenvolvimento, testes, deploy e sustentação.
             </p>
+            <ul className="cards focus">
+              {FOCUS.map((f) => (
+                <li className="card" key={f.title}>
+                  <h3>{f.title}</h3>
+                  <p>{f.text}</p>
+                </li>
+              ))}
+            </ul>
             <ul className="cards cards-4">
               {SKILLS.map((g) => (
                 <li className="card" key={g.title}>
@@ -237,7 +260,7 @@ export default function App() {
           <div className="wrap final-in">
             <p className="eyebrow">Contato</p>
             <h2 id="h-final">Vamos trabalhar juntos?</h2>
-            <p className="lead">Tem uma vaga ou quer saber mais sobre o meu trabalho? Fale comigo.</p>
+            <p className="lead">Quer saber mais sobre o meu trabalho ou trocar uma ideia sobre software e IA? Fale comigo.</p>
             <div className="hero-cta">
               <Ext className="btn btn-light" href={LINKEDIN_URL}>Falar no LinkedIn</Ext>
               <Ext className="btn btn-outline" href={WHATSAPP_URL}>WhatsApp</Ext>
