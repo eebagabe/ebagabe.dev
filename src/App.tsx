@@ -16,79 +16,78 @@ const NAV = [
 const FOCUS = [
   {
     title: "IA aplicada a produtos",
-    text: "Integro LLMs a sistemas via MCP. Exemplo: um assistente que cria lançamentos, gera relatórios e define metas em um app de finanças.",
+    text: "Integro modelos de linguagem (LLMs) a sistemas reais com Model Context Protocol (MCP), para que a IA execute ações e não apenas responda perguntas.",
   },
   {
-    title: "Desenvolvimento com agentes",
-    text: "Uso agentes de IA no dia a dia para acelerar entregas, com specs técnicas e testes automatizados no processo.",
+    title: "Engenharia de ponta a ponta",
+    text: "Trabalho da especificação e modelagem de dados às APIs, interfaces, deploy e sustentação em nuvem.",
   },
   {
-    title: "Sistemas de ponta a ponta",
-    text: "Aplicações web e mobile, APIs, pagamentos, filas e notificações, da modelagem de dados à operação na nuvem.",
+    title: "Qualidade e performance",
+    text: "Automatizo testes, reviso gargalos de banco e cache e uso agentes de IA para entregar mais rápido.",
   },
 ];
 
 const SKILLS = [
-  { title: "Back-end", items: ["Laravel", "PHP", "NestJS", "Node.js", "APIs REST", "Filas"] },
-  { title: "Front-end e mobile", items: ["Vue.js", "Nuxt", "Quasar", "React", "Angular", "TypeScript", "Tailwind", "Capacitor"] },
-  { title: "Dados e nuvem", items: ["PostgreSQL", "MySQL", "Modelagem de dados", "AWS (EC2, RDS, S3, Route 53)", "Linux", "Git"] },
-  { title: "Qualidade e IA", items: ["PHPUnit", "Cypress", "MCP", "Integração com LLMs", "Asaas", "PlugNotas", "Claude Code", "Codex", "Google Antigravity", "Grok"] },
+  { title: "Back-end", items: ["PHP", "Laravel", "Node.js", "NestJS", "APIs REST", "Filas"] },
+  { title: "Front-end e mobile", items: ["JavaScript", "TypeScript", "Vue.js", "Nuxt", "React", "Angular", "Tailwind CSS", "Capacitor"] },
+  { title: "Banco de dados e cloud", items: ["PostgreSQL", "MySQL", "Modelagem de dados", "AWS", "EC2", "RDS", "S3", "Linux", "Git"] },
+  { title: "Inteligência artificial e testes", items: ["LLMs", "Model Context Protocol (MCP)", "Agentes de IA", "Claude Code", "Testes automatizados", "PHPUnit", "Cypress"] },
 ];
 
 const JOBS = [
   {
     company: "Softpar",
     role: "Desenvolvedor Full Stack · Remoto",
-    period: "jan/2025 até hoje",
+    period: "01/2025 até o momento",
     items: [
-      "App mobile (Android/iOS) de finanças pessoais com assistente de IA via MCP: o chat cria, edita e consulta lançamentos, gera relatórios e define metas. Cerca de 200 usuários ativos.",
-      "Plataforma de gestão de franquias: contratos, matrículas, cobranças (Asaas), emissão de NF (PlugNotas) e kanban interno.",
-      "Plataforma de locação náutica projetada para alta concorrência, com pagamentos, notificações e filas de e-mail.",
-      "Implantação de testes automatizados (PHPUnit, Cypress, Vue) em sistemas que só tinham teste manual, com 100% de cobertura em módulos novos e legados.",
-      "Otimização de performance com índices SQL, cache e UI otimista, modelagem PostgreSQL, specs técnicas e deploy e sustentação na AWS.",
-      "Módulos de um ERP para empresa de energia solar e de uma plataforma para academias (Laravel + Vue).",
+      "Desenvolvimento de app mobile (Android e iOS) de finanças pessoais com cerca de 200 usuários ativos, incluindo um assistente de IA via MCP que registra e consulta lançamentos, gera relatórios e define metas por conversa.",
+      "Implantação de testes automatizados (PHPUnit e Cypress) em sistemas que dependiam de teste manual, com 100% de cobertura em módulos novos e legados.",
+      "Desenvolvimento de plataforma de gestão de franquias que centraliza contratos, matrículas, cobranças e emissão de notas fiscais, com integração a APIs de pagamento e fiscais.",
+      "Desenvolvimento de plataforma de locação náutica projetada para alta concorrência, com pagamentos online, notificações e filas.",
+      "Otimização de performance com índices SQL, cache e UI otimista, além de modelagem em PostgreSQL e deploy e sustentação na AWS.",
     ],
   },
   {
     company: "Imagine Apps",
     role: "Desenvolvedor Full Stack",
-    period: "ago/2024 a jan/2025",
-    items: ["Funcionalidades de uma plataforma para incorporadoras: corretores vendem unidades e clientes acompanham a compra (Angular + NestJS)."],
+    period: "08/2024 a 01/2025",
+    items: ["Desenvolvimento de funcionalidades de uma plataforma para incorporadoras com Angular e NestJS, conectando corretores à venda de unidades e clientes ao acompanhamento da compra."],
   },
   {
     company: "Gajoy",
-    role: "Desenvolvedor Full Stack · Maceió",
-    period: "jan/2024 a ago/2024",
-    items: ["Landing pages, e-commerces e sites institucionais para clientes (React + PHP), do levantamento de requisitos ao deploy."],
+    role: "Desenvolvedor Full Stack",
+    period: "01/2024 a 08/2024",
+    items: ["Desenvolvimento de e-commerces e sites institucionais com React e PHP, do levantamento de requisitos com o cliente ao deploy."],
   },
   {
     company: "Doity",
     role: "Desenvolvedor (bolsista)",
-    period: "jun/2023 a dez/2023",
-    items: ["Plataforma de gestão de eventos (CakePHP) e desenvolvimento de um módulo de CRM."],
+    period: "06/2023 a 12/2023",
+    items: ["Desenvolvimento em PHP (CakePHP) de plataforma de gestão de eventos, incluindo recursos de CRM."],
   },
 ];
 
 const REPOS = [
   {
+    name: "ai_agent",
+    lang: "C# · .NET · Gemini",
+    text: "Chat com IA na linha de comando integrado ao Gemini, com funções isoladas para listar, ler e gravar arquivos e testes automatizados.",
+  },
+  {
     name: "windows-rec",
-    lang: "C# · .NET",
-    text: "Gravador de tela para Windows com áudio do sistema e microfone, detecção de janela e encoder por GPU.",
+    lang: "C# · .NET · FFmpeg",
+    text: "Gravador de tela para Windows com áudio do sistema e microfone, codificação por GPU e instalador próprio.",
+  },
+  {
+    name: "eleicoes-2026",
+    lang: "React · TypeScript",
+    text: "Acompanhamento da apuração das Eleições 2026 em tempo real, com dados da API pública do TSE e função serverless de notícias.",
   },
   {
     name: "static_site_generator",
     lang: "C#",
     text: "Gerador de sites estáticos feito do zero, com parser próprio de Markdown para HTML e testes unitários.",
-  },
-  {
-    name: "ai_agent",
-    lang: "C#",
-    text: "Agente de IA que usa o Gemini.",
-  },
-  {
-    name: "eleicoes-2026",
-    lang: "TypeScript",
-    text: "Projeto independente com dados oficiais do TSE sobre as eleições de 2026.",
   },
 ];
 
@@ -164,7 +163,7 @@ export default function App() {
                 Oi, eu sou <em>Gabriel Alves</em>.
               </h1>
               <p className="lead">
-                Desenvolvo sistemas web e mobile de ponta a ponta e levo inteligência artificial para produtos que as pessoas usam no dia a dia.
+                Construo produtos web e mobile que chegam à produção e aplico inteligência artificial para resolver problemas reais.
               </p>
               <div className="hero-cta">
                 <a className="btn btn-primary" href="#projetos">Ver projetos</a>
@@ -178,10 +177,10 @@ export default function App() {
         <section className="section" id="sobre" aria-labelledby="h-sobre">
           <div className="wrap">
             <p className="eyebrow">Sobre mim</p>
-            <h2 id="h-sobre">Software e IA, do plano à produção.</h2>
+            <h2 id="h-sobre">Engenharia de software e IA aplicada.</h2>
             <p className="lead about">
-              Há mais de 3 anos construo sistemas em produção, com foco em APIs, pagamentos integrados e IA aplicada.
-              Participo de todo o ciclo: especificação, modelagem de dados, desenvolvimento, testes, deploy e sustentação.
+              Sou desenvolvedor full stack com mais de 3 anos de experiência em sistemas web e mobile em produção,
+              em áreas como finanças, franquias, mercado imobiliário e eventos. Meu foco é em APIs, pagamentos integrados e inteligência artificial (IA) aplicada.
             </p>
             <ul className="cards focus">
               {FOCUS.map((f) => (
@@ -191,6 +190,12 @@ export default function App() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        <section className="section alt" id="competencias" aria-labelledby="h-comp">
+          <div className="wrap">
+            <h2 id="h-comp">Competências técnicas</h2>
             <ul className="cards cards-4">
               {SKILLS.map((g) => (
                 <li className="card" key={g.title}>
@@ -204,10 +209,9 @@ export default function App() {
           </div>
         </section>
 
-        <section className="section alt" id="experiencia" aria-labelledby="h-exp">
+        <section className="section" id="experiencia" aria-labelledby="h-exp">
           <div className="wrap">
-            <p className="eyebrow">Experiência</p>
-            <h2 id="h-exp">Onde trabalhei.</h2>
+            <h2 id="h-exp">Experiência profissional</h2>
             <ol className="jobs">
               {JOBS.map((j) => (
                 <li className="card job" key={j.company}>
@@ -225,7 +229,7 @@ export default function App() {
             <ul className="cards cards-4">
               <li className="card">
                 <h3>Formação</h3>
-                <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, Estácio. jun/2024 a jun/2027 (previsão).</p>
+                <p>Tecnólogo em Análise e Desenvolvimento de Sistemas, Estácio. 06/2024 a 06/2027 (previsão).</p>
               </li>
               <li className="card">
                 <h3>Idiomas</h3>
@@ -239,8 +243,7 @@ export default function App() {
 
         <section className="section alt" id="codigo" aria-labelledby="h-cod">
           <div className="wrap">
-            <p className="eyebrow">Código</p>
-            <h2 id="h-cod">Também no GitHub.</h2>
+            <h2 id="h-cod">Projetos no GitHub</h2>
             <ul className="cards cards-4">
               {REPOS.map((r) => (
                 <li key={r.name}>
@@ -260,7 +263,7 @@ export default function App() {
           <div className="wrap final-in">
             <p className="eyebrow">Contato</p>
             <h2 id="h-final">Vamos trabalhar juntos?</h2>
-            <p className="lead">Quer saber mais sobre o meu trabalho ou trocar uma ideia sobre software e IA? Fale comigo.</p>
+            <p className="lead">Estou à disposição para conversar sobre produtos, software e inteligência artificial.</p>
             <div className="hero-cta">
               <Ext className="btn btn-light" href={LINKEDIN_URL}>Falar no LinkedIn</Ext>
               <Ext className="btn btn-outline" href={WHATSAPP_URL}>WhatsApp</Ext>

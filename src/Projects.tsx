@@ -99,8 +99,7 @@ export default function Projects() {
   return (
     <section className="section projects" id="projetos" aria-labelledby="h-proj">
       <div className="wrap">
-        <p className="eyebrow">Projetos</p>
-        <h2 id="h-proj">Projetos selecionados.</h2>
+        <h2 id="h-proj">Projetos</h2>
         <ul className="pgrid">
           {PROJECTS.map((p) => (
             <li key={p.slug}>

@@ -21,7 +21,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "conectavidas",
     name: "ConectaVidas",
-    description: "Plataforma de telemedicina veterinária e humana, com planos de assinatura, teleconsultas e videoaulas.",
+    description: "Plataforma de telemedicina humana e veterinária que reúne teleconsultas, planos de assinatura e videoaulas.",
     stack: ["Vue", "Laravel"],
     link: "https://conectavidasmed.com.br",
     shots: shots("conectavidas", "ConectaVidas", ["página inicial", "serviços oferecidos", "planos de assinatura"], ["página inicial", "planos de assinatura"]),
@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "lojalves",
     name: "AlveStore (Lojalves)",
-    description: "E-commerce para Maceió/AL com catálogo por categorias, carrinho e pedido finalizado direto pelo WhatsApp.",
+    description: "E-commerce com catálogo por categorias, carrinho e finalização do pedido pelo WhatsApp.",
     stack: [".NET", "React"],
     tag: "Em testes",
     shots: shots("lojalves", "AlveStore", ["catálogo", "página de produto", "carrinho com pedido pelo WhatsApp"], ["catálogo", "página de produto"]),
@@ -37,7 +37,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "sulminas",
     name: "SulMinas Laticínios",
-    description: "Landing page para indústria de laticínios, com catálogo de produtos, clientes atendidos e formulário de proposta.",
+    description: "Site para indústria de laticínios que apresenta o catálogo e recebe propostas comerciais por formulário.",
     stack: ["React"],
     link: "https://sulminaslanding-chi.vercel.app",
     tag: "Cliente",
@@ -46,7 +46,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "roadmap",
     name: "Roadmap",
-    description: "Trilhas de estudo semana a semana (Java, React, QA, Dados e mais), com apostilas e progresso salvo.",
+    description: "Plataforma de estudos em tecnologia com trilhas semanais, apostilas e progresso salvo.",
     stack: ["React", "TypeScript"],
     link: "https://roadmap.ghalves.com",
     shots: shots("roadmap", "Roadmap", ["trilhas disponíveis", "trilha Java Backend", "mapa da trilha React"], ["trilhas disponíveis", "trilha Java Backend"]),
